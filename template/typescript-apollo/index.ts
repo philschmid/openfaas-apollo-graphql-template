@@ -24,7 +24,6 @@ const server = new ApolloServer({
 server.applyMiddleware({app})
 
 const port = process.env.http_port || 3000
-console.log(process.env.http_port)
 
 app.listen(port, () => {
   console.log(`OpenFaaS Node.js listening on port: ${port}`)

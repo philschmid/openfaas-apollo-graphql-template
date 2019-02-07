@@ -20,3 +20,7 @@ npm up
 #local developement
 npm start
 ```
+
+### Importend
+
+edit .gitigone and add .env there are only example files

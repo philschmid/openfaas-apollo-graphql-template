@@ -26,16 +26,19 @@
   "license": "ISC",
   "dependencies": {
     "@types/jest": "^24.0.0",
+    "@types/node": "^10.12.21",
+    "@types/graphql": "^14.0.5",
     "apollo-server-express": "^2.3.3",
     "dotenv": "^6.2.0",
     "express": "^4.16.2",
     "graphql": "14.1.1",
     "jest": "^24.1.0",
+    "pg": "^7.7.1",
     "ts-jest": "^23.10.5",
+    "typeorm": "^0.2.12",
     "typescript": "^3.3.1"
   },
   "devDependencies": {
-    "@types/graphql": "^14.0.5",
     "ts-node": "^8.0.2",
     "copyfiles": "^2.1.0"
   }

@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true,
     "preserveConstEnums": true,
     "strictNullChecks": true,
     "module": "commonjs",
     "sourceMap": false,
     "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "target": "es2016",
     "lib": ["es6", "es7", "esnext"],
     "outDir": ".",
@@ -24,7 +24,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": false,
     "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "experimentalDecorators": true
   },
   "exclude": ["node_modules", "test"],
   "include": ["**/*"]

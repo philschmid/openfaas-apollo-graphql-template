@@ -16,6 +16,7 @@ if (process.env.NODE_ENV === 'develope') {
   throw new Error('no Process Enviromnet Variable defined')
 }
 
+
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -23,8 +24,8 @@ const server = new ApolloServer({
 
 server.applyMiddleware({app})
 
-const port = process.env.http_port || 3000
-console.log(process.env.http_port)
+const port =  3000
+
 
 app.listen(port, () => {
   console.log(`OpenFaaS Node.js listening on port: ${port}`)

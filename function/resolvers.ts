@@ -5,14 +5,14 @@ import {connectDatabase, closeConnection} from './service/database'
 export default {
   Query: {
     hello: async (obj, args, context, info) => {
-      return await connectDatabase()
+      return await connectDatabase('mongo')
         .then(async res => {
           console.log(res)
           // closeConnection()
-          return "SUCCESS"
+          return res
         })
         .catch(err => {
-          throw err
+          return err
         })
     },
   },

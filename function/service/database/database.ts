@@ -1,19 +1,19 @@
 /** @format */
-import {createConnections, getConnection, createConnection, ConnectionOptions} from 'typeorm'
+import {getConnection, createConnection, ConnectionOptions} from 'typeorm'
 import {postgres as PostgresConnection, mongo as MongoConnection} from './database.config'
 
-export const connectDatabase = async (type: string) => {
+export const connectDatabase = async (type: string, dbObject?: ConnectionOptions) => {
   return new Promise(async (resolve: any, reject: any) => {
     switch (type) {
       case 'postgres':
-        await createConnection(PostgresConnection)
+        await createConnection(dbObject || PostgresConnection)
           .then(res => {
             resolve(res.isConnected)
           })
           .catch(err => reject(err))
         break
       case 'mongo':
-        await createConnection(MongoConnection)
+        await createConnection(dbObject || MongoConnection)
           .then(res => resolve(res.isConnected))
           .catch(err => reject(err))
         break
@@ -24,11 +24,11 @@ export const connectDatabase = async (type: string) => {
   })
 }
 export const closeConnection = async (type: string) => {
-  await getConnection(type).close()
-  if (getConnection(type).isConnected === false) {
+  try {
+    await getConnection(type).close()
     return true
-  } else {
-    throw new Error(`DB Connection schließen von ${type} fehlgeschlagen`)
+  } catch (error) {
+    throw error
   }
 }
 

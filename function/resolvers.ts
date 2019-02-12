@@ -5,7 +5,7 @@ import {connectDatabase, closeConnection} from './service/database'
 export default {
   Query: {
     hello: async (obj, args, context, info) => {
-      return await connectDatabase('mongo')
+      return await connectDatabase(args.text)
         .then(async res => {
           console.log(res)
           // closeConnection()

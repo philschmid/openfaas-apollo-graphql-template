@@ -61,3 +61,4 @@ coverage
 # next.js build output
 .next
 build
+data

@@ -6,7 +6,7 @@ export const connectDatabase = async (type: string) => {
   return new Promise(async (resolve: any, reject: any) => {
     await createConnections([
       {
-        name: 'postges',
+        name: 'postgres',
         type: 'postgres',
         host: process.env['pg-host'],
         port: Number(process.env['pg-port']),
@@ -20,25 +20,25 @@ export const connectDatabase = async (type: string) => {
       {
         name: 'mongo',
         type: 'mongodb',
-        host: 'localhost',
-        port: 31705,
-        database: 'admin',
-        username: 'admin',
-        password: 'password2',
+        host: process.env['mongo-host'],
+        port: Number(process.env['mongo-port']),
+        username: process.env['mongo-user'],
+        password: process.env['mongo-password'],
+        database: process.env['mongo-db'],
         useNewUrlParser: true,
         // url: 'mongodb+srv://admin:admin@lo',
         authSource: 'admin',
       },
     ])
     switch (type) {
-      case 'postress':
-        resolve(getConnection('postgress'))
+      case 'postgres':
+        resolve(getConnection('postgres'))
         break
       case 'mongo':
         resolve(getConnection('mongo'))
         break
       default:
-        reject(new Error('keine gültige DB Connection'))
+        reject(new Error(`keine gültige ${type} DB Connection`))
     }
   })
 }

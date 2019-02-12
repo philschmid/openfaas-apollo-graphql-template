@@ -9,6 +9,7 @@
   "scripts": {
     "test": "jest --coverage --color",
     "start": "NODE_ENV=develope ts-node index.ts",
+    "start-prod": "NODE_ENV=production ts-node index.ts",
     "build-fn": "copyfiles -f ./package.json function",
     "build-ts": "tsc",
     "build": "npm run build-fn && faas-cli build -f $npm_package_config_name.yml",

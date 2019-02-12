@@ -1,0 +1,31 @@
+# @format
+
+version: '3'
+services:
+  mongodb:
+    restart: always
+    image: mongo:latest
+    container_name: 'mongodb-compose'
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=adminpassword
+    volumes:
+      - ./data/db/mongo:/data/db/mongo
+    ports:
+      - 27017:27017
+    command: mongod --auth --smallfiles --logpath=/dev/null # --quiet
+  PostgreSQL:
+    restart: always
+    image: postgres:10.4
+    container_name: 'postgres-compose'
+    ports:
+      - '5432:5432'
+    environment:
+      - DEBUG=false
+      - POSTGRES_USER=postgresadmin
+      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=postgres
+    volumes:
+      - ./data/db/postgres:/data/db/postgres

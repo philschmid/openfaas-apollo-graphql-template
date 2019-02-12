@@ -16,7 +16,7 @@ export const postgres: PostgresConnectionOptions = {
   entities: [__dirname + '/entity/*{.js,.ts}'],
 }
 export const mongo: MongoConnectionOptions = {
-  name: 'mongo',
+  name: 'mongodb',
   type: 'mongodb',
   host: process.env['mongo-host'],
   port: Number(process.env['mongo-port']),

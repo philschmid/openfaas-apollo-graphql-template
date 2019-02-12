@@ -1,31 +1,30 @@
 /** @format */
 import {getConnection, createConnection, ConnectionOptions} from 'typeorm'
-import {postgres as PostgresConnection, mongo as MongoConnection} from './database.config'
 
-export const connectDatabase = async (type: string, dbObject?: ConnectionOptions) => {
+export const connectDatabase = async (ConnectionObject: ConnectionOptions) => {
   return new Promise(async (resolve: any, reject: any) => {
-    switch (type) {
+    switch (ConnectionObject.name) {
       case 'postgres':
-        await createConnection(dbObject || PostgresConnection)
+        await createConnection(ConnectionObject)
           .then(res => {
             resolve(res.isConnected)
           })
           .catch(err => reject(err))
         break
-      case 'mongo':
-        await createConnection(dbObject || MongoConnection)
+      case 'mongodb':
+        await createConnection(ConnectionObject)
           .then(res => resolve(res.isConnected))
           .catch(err => reject(err))
         break
       default:
-        reject(new Error(`keine gültige ${type} DB Connection`))
+        reject(new Error(`keine gültige ${ConnectionObject.name} DB Connection`))
         break
     }
   })
 }
-export const closeConnection = async (type: string) => {
+export const closeConnection = async ({name}: any) => {
   try {
-    await getConnection(type).close()
+    await getConnection(name).close()
     return true
   } catch (error) {
     throw error

@@ -1,2 +1,3 @@
 language: typescript-apollo
 fprocess: node index.js
+imagePullPolicy: IfNotPresent

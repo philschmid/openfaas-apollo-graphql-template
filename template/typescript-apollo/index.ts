@@ -8,13 +8,7 @@ import {ApolloServer} from 'apollo-server-express'
 import {typeDefs} from './function/typeDefs'
 import resolvers from './function/resolvers'
 const app = express()
-if (process.env.NODE_ENV === 'develope') {
-  require('dotenv').config({path: './function/.env.dev'})
-} else if (process.env.NODE_ENV === 'production') {
-  require('dotenv').config({path: './function/.env.prod'})
-} else {
-  throw new Error('no Process Enviromnet Variable defined')
-}
+require('dotenv').config({path: `./function/.env.${process.env.NODE_ENV}`})
 
 const server = new ApolloServer({
   typeDefs,
@@ -23,7 +17,7 @@ const server = new ApolloServer({
 
 server.applyMiddleware({app})
 
-const port = process.env.http_port || 3000
+const port = 3000
 
 app.listen(port, () => {
   console.log(`OpenFaaS Node.js listening on port: ${port}`)

@@ -25,7 +25,7 @@ npm start
 
 ## Enviroment-Files
 
-add .env.development in /function/ for local-development \n
+add .env.development in /function/ for local-development  
 add .env.production in /function/ for production
 
 #### Example .env

@@ -62,3 +62,7 @@ coverage
 .next
 build
 data
+
+
+function/.env.development
+function/.env.production

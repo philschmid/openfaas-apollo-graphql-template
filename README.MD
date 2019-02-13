@@ -23,4 +23,41 @@ npm start
 
 ### Importend
 
-edit .gitigone and add .env there are only example files
+## Enviroment-Files
+
+add .env.development in /function/ for local-development 
+add .env.production in /function/ for production 
+
+#### Example .env
+
+```yaml
+#.env.development
+#postgresdb
+pg-host='localhost'
+pg-port=5432
+pg-db='postgresdb'
+pg-user = 'postgresadmin'
+pg-password= 'admin123'
+
+#mongodb test
+mongo-host='localhost'
+mongo-port=27017
+mongo-db='admin'
+mongo-user='admin'
+mongo-password='adminpassword'
+
+#.env.production
+#postgresdb
+pg-host='postgres.openfaas-db'
+pg-port=5432
+pg-db='postgresdb'
+pg-user = 'postgresadmin'
+pg-password= 'admin123'
+
+#mongodb
+mongo-host='mongodb.openfaas-db'
+mongo-port=27017
+mongo-db='admin'
+mongo-user='admin'
+mongo-password='password2'
+```
